@@ -1,0 +1,40 @@
+# Large dataset directories
+Dataset/
+data_activity/
+Paper/
+output/
+Output/
+checkpoints/
+
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter Notebook checkpoints & Pytest Cache
+.ipynb_checkpoints/
+.pytest_cache/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Model checkpoints & logs
+*.pth
+*.pt
+*.pkl
+*.log

@@ -1,0 +1,56 @@
+# ==============================================================================
+# Multimodal Activity Recognition (CSI + Computer Vision) Configuration
+# ==============================================================================
+
+project:
+  name: "Multimodal-CSI-CV-Activity-Recognition"
+  version: "1.0.0"
+  random_seed: 42
+  device: "auto"  # "auto" dynamically resolves to cuda > mps > cpu
+
+paths:
+  # Primary dataset path with label_mapping.csv
+  dataset_base_path: "Dataset/Data_acti_CSI_CV/Activity_CV_CSI_Dataset"
+  # Fallback alternative dataset path
+  fallback_dataset_path: "data_activity"
+  output_base_path: "Output"
+
+data:
+  image_size: [224, 224]
+  csi_length: 102
+  num_classes: 8
+  samples_per_class_train_val: 1000
+  test_samples_per_class: 200
+  train_split: 0.8
+  val_split: 0.2
+  batch_size: 16
+  num_workers: 2
+  pin_memory: true
+
+classes:
+  KhongHanhDong: 0
+  VayTay: 1
+  KeoGhe: 2
+  Dung: 3
+  Nam: 4
+  Nga: 5
+  Ngoi: 6
+  NhatDo: 7
+
+training:
+  epochs: 30
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 5
+  scheduler_patience: 2
+  scheduler_factor: 0.5
+  gradient_clip_max_norm: 1.0
+  models_to_train:
+    - "Vision-Only"
+    - "CSI-Only"
+    - "Fusion"
+
+model:
+  feature_dim: 64
+  triplet_margin: 0.2
+  triplet_loss_weight: 0.001
